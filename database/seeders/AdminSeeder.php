@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             'name' => 'ali',
             'email' => 'admin@example.com',
             'phone' => '01227942699',
-            'password' => Hash::make('password123'),
+            'password' =>'password123',
             // Add other admin attributes as needed
         ]);
     }
