@@ -12,30 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
 
-    public function login(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
-        }
-
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('admin')->attempt($credentials)) {
-            // Authentication passed...
-            $admin = Auth::guard('admin')->user();
-            $token = $admin->createToken('AdminToken')->plainTextToken;
-
-            return response()->json(['token' => $token], 200);
-        } else {
-            // Authentication failed...
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-    }
 
     public function index()
     {
