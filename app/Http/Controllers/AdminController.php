@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminStoreRequest;
+use App\Http\Requests\AdminUpdateRequest;
 use App\Http\Resources\AdminResource;
 use App\Models\Admin;
-use Illuminate\Http\Request;
+use App\Services\AdminService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+
+
 
 class AdminController extends Controller
 {
+    protected $adminService;
 
+    public function __construct(AdminService $adminService)
+    {
+        $this->adminService = $adminService;
+    }
 
     public function index()
     {
@@ -24,37 +31,23 @@ class AdminController extends Controller
         return new AdminResource($admin);
     }
 
-    public function store(Request $request)
+    public function store(AdminStoreRequest $request)
     {
-        $attributes = $request->validate([
-            'name' => ['required'],
-            'phone' => ['required', 'unique:admins'],
-            'email' => ['required', 'unique:admins'],
-        ]);
-
-        $attributes['password'] = Hash::make($attributes['phone']);
-
-        $admin = Admin::create($attributes);
-
+        $attributes = $request->validated();
+        $admin = $this->adminService->create($attributes);
         return new AdminResource($admin);
     }
 
-    public function update(Admin $admin, Request $request)
+    public function update(AdminUpdateRequest $request, Admin $admin)
     {
-        $attributes = $request->validate([
-            'name' => ['required'],
-            'phone' => ['required', 'unique:admins,phone,' . $admin->id],
-            'email' => ['required', 'unique:admins,email,' . $admin->id, 'email'],
-        ]);
-
-        $admin->update($attributes);
-
+        $attributes = $request->validated();
+        $admin = $this->adminService->update($admin, $attributes);
         return new AdminResource($admin);
     }
 
     public function destroy(Admin $admin)
     {
-        $admin->delete();
+        $this->adminService->delete($admin);
         return response()->noContent();
     }
 
