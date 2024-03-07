@@ -5,29 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminStoreRequest;
 use App\Http\Requests\AdminUpdateRequest;
 use App\Http\Resources\AdminResource;
-use App\Models\Admin;
-use App\Services\AdminService;
-use Illuminate\Support\Facades\Auth;
-
-
+use App\Services\AdminServiceInterface;
 
 class AdminController extends Controller
 {
     protected $adminService;
 
-    public function __construct(AdminService $adminService)
+    public function __construct(AdminServiceInterface $adminService)
     {
         $this->adminService = $adminService;
     }
 
     public function index()
     {
-        $admins = Admin::all();
+        $admins = $this->adminService->all();
         return AdminResource::collection($admins);
     }
 
-    public function show(Admin $admin)
+    public function show(int $id)
     {
+        $admin = $this->adminService->find($id);
+        if (!$admin) {
+            return response()->json(['message' => 'Admin not found'], 404);
+        }
         return new AdminResource($admin);
     }
 
@@ -38,15 +38,23 @@ class AdminController extends Controller
         return new AdminResource($admin);
     }
 
-    public function update(AdminUpdateRequest $request, Admin $admin)
+    public function update(AdminUpdateRequest $request, int $id)
     {
+        $admin = $this->adminService->find($id);
+        if (!$admin) {
+            return response()->json(['message' => 'Admin not found'], 404);
+        }
         $attributes = $request->validated();
         $admin = $this->adminService->update($admin, $attributes);
         return new AdminResource($admin);
     }
 
-    public function destroy(Admin $admin)
+    public function destroy(int $id)
     {
+        $admin = $this->adminService->find($id);
+        if (!$admin) {
+            return response()->json(['message' => 'Admin not found'], 404);
+        }
         $this->adminService->delete($admin);
         return response()->noContent();
     }
