@@ -24,7 +24,7 @@ class AdminController extends Controller
 
     public function show(int $id)
     {
-        $admin = $this->adminService->find($id);
+        $admin = $this->adminService->findId($id);
         if (!$admin) {
             return response()->json(['message' => 'Admin not found'], 404);
         }
@@ -40,7 +40,7 @@ class AdminController extends Controller
 
     public function update(AdminUpdateRequest $request, int $id)
     {
-        $admin = $this->adminService->find($id);
+        $admin = $this->adminService->findId($id);
         if (!$admin) {
             return response()->json(['message' => 'Admin not found'], 404);
         }
@@ -51,7 +51,7 @@ class AdminController extends Controller
 
     public function destroy(int $id)
     {
-        $admin = $this->adminService->find($id);
+        $admin = $this->adminService->findId($id);
         if (!$admin) {
             return response()->json(['message' => 'Admin not found'], 404);
         }

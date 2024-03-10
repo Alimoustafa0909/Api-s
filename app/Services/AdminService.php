@@ -5,14 +5,14 @@ namespace App\Services;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 
-class EloquentAdminService implements AdminServiceInterface
+class AdminService implements AdminServiceInterface
 {
-    public function index(): \Illuminate\Support\Collection
+    public function all(): \Illuminate\Support\Collection
     {
         return Admin::all();
     }
 
-    public function show(int $id): ?Admin
+    public function findId(int $id): ?Admin
     {
         return Admin::find($id);
     }
