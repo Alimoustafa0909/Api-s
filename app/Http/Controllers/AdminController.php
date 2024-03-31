@@ -59,9 +59,9 @@ class AdminController extends Controller
         return response()->noContent();
     }
 
-    public function logout()
-    {
-        Auth::guard('admin')->logout();
-        return response()->noContent();
-    }
+//    public function logout()
+//    {
+//        Auth::guard('admin')->logout();
+//        return response()->noContent();
+//    }
 }
