@@ -5,61 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\AcademicYearRequest;
+use App\Http\Resources\AcademicYearResource;
+
 class AcademicYearController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $academicYears = AcademicYear::all();
+        return AcademicYearResource::collection($academicYears);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(AcademicYearRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $academicYear = AcademicYear::create($data);
+        return new AcademicYearResource($academicYear);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(AcademicYear $academicYear)
     {
-        //
+        return new AcademicYearResource($academicYear);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AcademicYear $academicYear)
+    public function update(AcademicYearRequest $request, AcademicYear $academicYear)
     {
-        //
+        $data = $request->validated();
+
+        $academicYear->update($data);
+        return new AcademicYearResource($academicYear);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, AcademicYear $academicYear)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(AcademicYear $academicYear)
     {
-        //
+        $academicYear->delete();
+        return response()->json(null, 204);
     }
 }

@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->text('description')->nullable();
+            $table->string('academic_year_type')->nullable();
+            $table->date('registration_deadline')->nullable();
+            $table->string('status')->default('Active');
             $table->timestamps();
         });
     }

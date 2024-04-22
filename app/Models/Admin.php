@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
 
-
-class Admin extends Authenticatable implements JWTSubject
+class Admin extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'admins';
     protected $fillable = [
         'name',
@@ -17,13 +18,5 @@ class Admin extends Authenticatable implements JWTSubject
         // other fillable properties...
     ];
 
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
     // Rest of the code
 }
