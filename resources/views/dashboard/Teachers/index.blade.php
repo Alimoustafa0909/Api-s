@@ -35,7 +35,7 @@
                 <!--begin::Toolbar-->
                 <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
                     <!--begin::Add customer-->
-                    <a href="{{ route('dashboard.categories.create') }}" class="btn btn-primary">
+                    <a href="{{ route('dashboard.teachers.create') }}" class="btn btn-primary">
                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
                         <span class="svg-icon svg-icon-2">
 													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -43,7 +43,7 @@
 														<rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
 													</svg>
 												</span>
-                        <!--end::Svg Icon-->Add Category</a>
+                        <!--end::Svg Icon-->Add teachers</a>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
@@ -68,7 +68,7 @@
                 <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                     <th class="min-w-125px">ID</th>
                     <th class="min-w-125px">Image</th>
-                    <th class="min-w-125px">Category Name</th>
+                    <th class="min-w-125px">Teacher Name</th>
                     <th class="min-w-125px">Slug</th>
                     <th class="min-w-70px">Actions</th>
                 </tr>
@@ -77,25 +77,25 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fw-bold text-gray-600">
-                @forelse($categories as $category)
+                @forelse($teachers as $teacher)
                     <tr>
                         <!--begin::ID=-->
                         <td>
-                            {{ $category->id }}
+                            {{ $teacher->id }}
                         </td>
 
                         <td>
-                            <img src="{{ asset('storage/images/categories/' . $category['image']) }}" width="70"
+                            <img src="{{ asset('storage/images/teachers/' . $teacher['image']) }}" width="70"
                                  height="70">
                         </td>
                         <!--end::ID=-->
                         <!--begin::name=-->
                         <td>
-                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $category->name }}</a>
+                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $teacher->name }}</a>
                         </td>
 
                         <td>
-                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $category->slug }}</a>
+                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $teacher->slug }}</a>
                         </td>
 
                         <!--end::parent name=-->
@@ -115,17 +115,17 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.categories.show',$category) }}" class="menu-link px-3">View</a>
+                                    <a href="{{ route('dashboard.teachers.show',$teacher) }}" class="menu-link px-3">View</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.categories.edit',$category) }}" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Edit</a>
+                                    <a href="{{ route('dashboard.teachers.edit',$teacher) }}" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <form action="{{ route('dashboard.categories.destroy',$category) }}" method="POST">
+                                    <form action="{{ route('dashboard.teachers.destroy',$teacher) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="menu-link px-3">Delete</button>
@@ -148,7 +148,7 @@
                 <!--end::Table body-->
             </table>
             <!--end::Table-->
-            {{$categories->links()}}
+            {{teachers->links()}}
         </div>
         <!--end::Card body-->
     </div>

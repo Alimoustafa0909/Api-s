@@ -6,28 +6,29 @@ use App\Helpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Teacher;
 
-class CategoryController extends Controller
+class TeacherController extends Controller
 {
     public function index()
     {
-        $categories = Category::paginate(6);
-        return view('dashboard.categories.index', compact('categories'));
+        $teachers = Teacher::paginate(6);
+        return view('dashboard.categories.index', compact('teachers'));
     }
 
-    public function show(Category $category)
+    public function show(Teacher $teacher)
     {
-        return view('dashboard.categories.show', compact('category'));
+        return view('dashboard.teachers.show', compact('teacher'));
     }
 
-    public function edit(Category $category)
+    public function edit(Teacher $teacher)
     {
-        $categories = Category::all();
-        return view('dashboard.categories.edit', compact('category', 'categories'));
+        $teachers = Teacher::all();
+        return view('dashboard.teachers.edit', compact('teacher', 'teachers'));
     }
 
 
-    public function store(CategoryRequest $request)
+    public function store(TeacherRequest $request)
     {
 
         $attributes = $request->validated();

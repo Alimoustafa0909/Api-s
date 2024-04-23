@@ -11,7 +11,7 @@
                  class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                 <!-- begin :: Title -->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Products</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Courses</h1>
                 <!-- end   :: Title -->
 
                 <!-- begin :: Separator -->
@@ -34,12 +34,12 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.products.store') }}" class="form" method="post"
+            <form action="{{ route('dashboard.courses.store') }}" class="form" method="post"
                   enctype="multipart/form-data">
                 @csrf
                 <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
-                    <h3 class="fw-bolder text-dark"> Add Product</h3>
+                    <h3 class="fw-bolder text-dark"> Add Courses</h3>
                 </div>
                 <!-- end   :: Card header -->
 
@@ -100,11 +100,11 @@
 
                             <label class="fs-5 fw-bold mb-2">Name</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name_inp" name="name" placeholder="example"
-                                       value="{{ old('name') }}">
-                                <label for="name_inp">Enter Name</label>
+                                <input type="text" class="form-control" id="name_inp" name="title" placeholder="example"
+                                       value="{{ old('title') }}">
+                                <label for="name_inp">Enter Title</label>
                             </div>
-                            @error('name')
+                            @error('title')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
 
@@ -113,57 +113,76 @@
 
                         <div class="col-md-6 fv-row">
 
-                            <label class="fs-5 fw-bold mb-2">Slug</label>
+                            <label class="fs-5 fw-bold mb-2">description</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name_inp" name="slug" placeholder="example"
-                                       value="{{ old('slug') }}">
-                                <label for="name_inp">Enter Slug</label>
+                                <input type="text" class="form-control" id="name_inp" name="description" placeholder="example"
+                                       value="{{ old('description') }}">
+                                <label for="name_inp">Enter description</label>
                             </div>
-                            @error('slug')
+                            @error('description')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <div class="col-md-6 fv-row">
+                        <div class="col-md-6 fv-row" id="children-categories-container">
+                            <label class="fs-5 fw-bold mb-2">duration</label>
+                            <select class="form-select" name="duration" data-control="select2" multiple
+                                    data-placeholder="Select an option">
+                                <option value="3">3 weeks</option>
+                                <option value="6">6 weeks</option>
+                                <option value="9">9 weeks</option>
+                                <option value="12">12 weeks</option>
+                            </select>
 
-                            <label class="fs-5 fw-bold mb-2">short_description</label>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="name_inp" name="short_description"
-                                       placeholder="example"
-                                       value="{{ old('short_description') }}">
-                                <label for="name_inp">Enter Short_description </label>
-                            </div>
-                            @error('short_description')
+                            @error('duration')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="col-md-6 fv-row" id="children-categories-container">
                             <label class="fs-5 fw-bold mb-2">Stock_status</label>
-                            <select class="form-select" name="stock_status" data-control="select2" multiple
+                            <select class="form-select" name="lectures" data-control="select2" multiple
                                     data-placeholder="Select an option">
-                                <option value="instock">InStock</option>
-                                <option value="outofstock">Out Of Stock</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
                             </select>
 
-                            @error('stock_status')
+                            @error('lectures')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-
 
                         <div class="col-md-6 fv-row" id="children-categories-container">
-                            <label class="fs-5 fw-bold mb-2">Featured</label>
-                            <select class="form-select" name="featured" data-control="select2" multiple
+                            <label class="fs-5 fw-bold mb-2">quizzes</label>
+                            <select class="form-select" name="quizzes" data-control="select2" multiple
                                     data-placeholder="Select an option">
-                                <option value="1">1</option>
-                                <option value="0"> 0</option>
+                                <option value="1">1 quizzes</option>
+                                <option value="2">2 quizzes</option>
+                                <option value="3">3 quizzes</option>
+                                <option value="4">4 quizzes</option>
+                                <option value="5">5 quizzes</option>
+                                <option value="6">6 quizzes</option>
+                                <option value="7">7 quizzes</option>
+                                <option value="8">8 quizzes</option>
+                                <option value="9">9 quizzes</option>
+                                <option value="10">10 quizzes</option>
+                                <option value="11">11 quizzes</option>
+                                <option value="12">12 quizzes</option>
                             </select>
 
-                            @error('featured')
+                            @error('quizzes')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
+
 
 
 
@@ -172,13 +191,13 @@
                         <!-- begin :: Column -->
                         <div class="col-md-6 fv-row">
 
-                            <label class="fs-5 fw-bold mb-2">Description</label>
+                            <label class="fs-5 fw-bold mb-2">people_enrolled</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="phone_inp" name="description"
-                                       placeholder="example" value="{{ old('description') }}">
-                                <label for="phone_inp">Description</label>
+                                <input type="text" class="form-control" id="phone_inp" name="people_enrolled"
+                                       placeholder="example" value="{{ old('people_enrolled') }}">
+                                <label for="people_enrolled">people_enrolled</label>
                             </div>
-                            @error('description')
+                            @error('people_enrolled')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
 
@@ -197,73 +216,37 @@
 
                             <label class="fs-5 fw-bold mb-2">Price</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="email_inp" name="regular_price"
-                                       placeholder="example" value="{{ old('regular_price') }}">
-                                <label for="email_inp">Price</label>
+                                <input type="text" class="form-control" id="price" name="price"
+                                       placeholder="example" value="{{ old('price') }}">
+                                <label for="price">Price</label>
                             </div>
-                            @error('regular_price')
+                            @error('price')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <!-- end   :: Column -->
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row">
 
-                            <label class="fs-5 fw-bold mb-2">Price After Discount</label>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="phone_inp" name="sale_price"
-                                       placeholder="example" value="{{ old('sale_price') }}">
-                                <label for="phone_inp">Price After Discount</label>
-                            </div>
-                            @error('sale_price')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
                         <!-- end   :: Column -->
 
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row">
 
-                            <label class="fs-5 fw-bold mb-2">Stock Quantity</label>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="phone_inp" name="quantity"
-                                       placeholder="example" value="{{ old('quantity') }}">
-                                <label for="phone_inp">Stock Quantity</label>
-                            </div>
-                            @error('quantity')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-
-
-                        </div>
                         <!-- end   :: Column -->
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row">
-                            <label class="fs-5 fw-bold mb-2">SKU</label>
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="phone_inp" name="SKU" placeholder="example"
-                                       value="{{ old('SKU') }}">
-                                <label for="phone_inp">SKU</label>
-                            </div>
-                            @error('SKU')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
 
-
-                        </div>
                         <!-- end   :: Column -->
                         <div class="col-md-6 fv-row" id="children-categories-container">
 
-                            <label class="fs-5 fw-bold mb-2">Category</label>
-                            <select class="form-select" data-control="select2" name="category_id" multiple
+                            <label class="fs-5 fw-bold mb-2">teacher_id</label>
+                            <select class="form-select" data-control="select2" name="teacher_id" multiple
                                     data-placeholder="Select an option">
                                 <option value=""></option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @foreach($teachers as $teacher)
+                                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
                                 @endforeach
 
                             </select>
-                            @error('category_id')
+                            @error('teacher_id')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>

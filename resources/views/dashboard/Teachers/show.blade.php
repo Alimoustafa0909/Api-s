@@ -50,7 +50,7 @@
                         <div class="col-md-12 text-center mb-5 fv-row">
 
                             <!--begin::Image input-->
-                            <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/Images/Categories/' . $category['image']) }}')">
+                            <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/Images/Teachers/' . $category['image']) }}')">
                                 <!--begin::Image preview wrapper-->
                                 <div class="image-input-wrapper w-125px h-125px"></div>
                                 <!--end::Image preview wrapper-->

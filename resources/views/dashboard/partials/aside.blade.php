@@ -164,7 +164,7 @@
 									</span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('dashboard.categories.index')}}">
+{{--                            <a class="menu-link" href="{{route('dashboard.categories.index')}}">--}}
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>

@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Helpers;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\CourseRequest;
+
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Product;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 
-class ProductController extends Controller
+class CourseController extends Controller
 {
     public function index()
     {
@@ -20,7 +22,7 @@ class ProductController extends Controller
         return view('dashboard.courses.index', compact('courses'));
     }
 
-    public function store(ProductRequest $request)
+    public function store(CourseRequest $request)
     {
         $attributes = $request->validated();
 
@@ -32,8 +34,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('dashboard.courses.create', compact('categories'));
+        $teachers = Teacher::all();
+        return view('dashboard.courses.create', compact('teachers'));
     }
 
     public function edit(Course $course)
@@ -41,7 +43,7 @@ class ProductController extends Controller
         return view('dashboard.products.edit', compact('course'));
     }
 
-    public function update(ProductRequest $request , Course $course)
+    public function update(CourseRequest $request , Course $course)
     {
         $attributes = $request->validated();
         if (request()->file('image'))

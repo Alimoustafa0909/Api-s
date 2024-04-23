@@ -29,7 +29,7 @@
                                       x="4" y="11" width="16" height="2" rx="1"/>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->Add Product
+                        <!--end::Svg Icon-->Add Course
                     </a>
                     <!--end::Add customer-->
                 </div>
@@ -48,13 +48,14 @@
                 <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                     <th>id</th>
                     <th>Image</th>
-                    <th>Name</th>
-                    <th>short_description</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Teacher_id</th>
+                    <th>Duration</th>
+                    <th>Lectures</th>
+                    <th>Quizzes</th>
+                    <th>People_enrolled</th>
                     <th>Price</th>
-                    <th>Price After Discount</th>
-                    <th>Stock Quantity</th>
-                    <th>SKU</th>
-                    <th>Actions</th>
                 </tr>
                 <!--end::Table row-->
                 </thead>
@@ -76,23 +77,25 @@
                         <!--end:: Image -->
                         <!--begin::Name=-->
                         <td>
-                            {{ $course->name }}
+                            {{ $course->title }}
                         </td>
                         <!--end::Name=-->
                         <!--begin::description=-->
                         <td>
-                            {{ $course->short_description }}
+                            {{ $course->description }}
                         </td>
                         <!--end::description=-->
                         <!--begin::price=-->
                         <td>
-                            {{ $course->regular_price }}
+                            {{ $course->teacher_id }}
                         </td>
                         <!--end::price=-->
                         <!--begin::price after discoun=-->
-                        <td>{{ $course->sale_price }}</td>
-                        <td>{{ $course->quantity }}</td>
-                        <td>{{ $course->SKU }}</td>
+                        <td>{{ $course->duration }}</td>
+                        <td>{{ $course->lectures }}</td>
+                        <td>{{ $course->quizzes }}</td>
+                        <td>{{ $course->people_enrolled }}</td>
+                        <td>{{ $course->price }}</td>
                         <!--end::price after discount=-->
                         <!--begin::Action=-->
                         <td>
