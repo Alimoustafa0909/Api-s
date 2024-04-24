@@ -18,9 +18,7 @@
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
                 <!-- end   :: Separator -->
 
-
             </div>
-
         </div>
 
     </div>

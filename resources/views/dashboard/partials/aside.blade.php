@@ -159,16 +159,16 @@
                             </span>
                             <!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Categories</span>
+										<span class="menu-title">Teachers</span>
 										<span class="menu-arrow"></span>
 									</span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-{{--                            <a class="menu-link" href="{{route('dashboard.categories.index')}}">--}}
+                            <a class="menu-link" href="{{route('dashboard.teachers.index')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-                                <span class="menu-title">Categories List</span>
+                                <span class="menu-title">Teachers List</span>
                             </a>
                         </div>
                     </div>

@@ -34,12 +34,12 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.categories.store') }}" class="form" method="post"
+            <form action="{{ route('dashboard.teachers.store') }}" class="form" method="post"
                   enctype="multipart/form-data">
                 @csrf
                 <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
-                    <h3 class="fw-bolder text-dark"> Add Category</h3>
+                    <h3 class="fw-bolder text-dark"> Add Teacher</h3>
                 </div>
                 <!-- end   :: Card header -->
 
@@ -108,14 +108,28 @@
                             @enderror
                         </div>
 
+                        <div class="col-md-6 fv-row" id="children-categories-container">
+                            <label class="fs-5 fw-bold mb-2">Title</label>
+                            <select class="form-select" name="title" data-control="select2" multiple
+                                    data-placeholder="Select an option">
+                                <option value="1">Teacher</option>
+                                <option value="2">Special Assistant</option>
+                                <option value="3">Education Assistant</option>
+                            </select>
+
+                            @error('title')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="col-md-6 fv-row">
-                            <label class="fs-5 fw-bold mb-2">Slug</label>
+                            <label class="fs-5 fw-bold mb-2">Description</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name_inp" name="slug" placeholder="example"
-                                       value="{{ old('slug') }}">
-                                <label for="name_inp">Enter Slug</label>
+                                <input type="text" class="form-control" id="name_inp" name="description" placeholder="example"
+                                       value="{{ old('description') }}">
+                                <label for="name_inp">Enter Description</label>
                             </div>
-                            @error('slug')
+                            @error('description')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>

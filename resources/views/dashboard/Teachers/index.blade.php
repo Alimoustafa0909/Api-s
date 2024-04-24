@@ -69,7 +69,8 @@
                     <th class="min-w-125px">ID</th>
                     <th class="min-w-125px">Image</th>
                     <th class="min-w-125px">Teacher Name</th>
-                    <th class="min-w-125px">Slug</th>
+                    <th class="min-w-125px">Title</th>
+                    <th class="min-w-125px">Description</th>
                     <th class="min-w-70px">Actions</th>
                 </tr>
                 <!--end::Table row-->
@@ -95,7 +96,10 @@
                         </td>
 
                         <td>
-                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $teacher->slug }}</a>
+                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $teacher->title }}</a>
+                        </td>
+                        <td>
+                            <a href="#" class="text-gray-600 text-hover-primary mb-1">{{ $teacher->description }}</a>
                         </td>
 
                         <!--end::parent name=-->
@@ -148,7 +152,7 @@
                 <!--end::Table body-->
             </table>
             <!--end::Table-->
-            {{teachers->links()}}
+            {{$teachers->links()}}
         </div>
         <!--end::Card body-->
     </div>
