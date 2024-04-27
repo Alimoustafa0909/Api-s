@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CourseController;
 
 Route::prefix('dashboard')->group(function () {
     Route::middleware('auth:admin')->group(function () {
@@ -21,6 +22,7 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
     Route::apiResource('admins', AdminController::class);
+    Route::apiResource('courses', CourseController::class)->only(['index', 'show']);
 });
 
 

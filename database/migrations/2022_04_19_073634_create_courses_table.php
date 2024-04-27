@@ -24,6 +24,8 @@ class CreateCoursesTable extends Migration
             $table->unsignedInteger('quizzes')->default(0);
             $table->unsignedInteger('people_enrolled')->default(0);
             $table->unsignedBigInteger('price')->nullable();
+            $table->string('image');
+            $table->text('images')->nullable();
             $table->timestamps();
         });
     }

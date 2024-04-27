@@ -18,6 +18,7 @@ class Course extends Model
         'quizzes',
         'people_enrolled',
         'price',
+        'image',
     ];
 
     public function instructor()
