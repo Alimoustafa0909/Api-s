@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\CourseController;
 
 Route::prefix('dashboard')->group(function () {
     Route::middleware('auth:admin')->group(function () {
