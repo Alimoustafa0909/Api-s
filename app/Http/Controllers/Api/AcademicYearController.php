@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\AcademicYear;
-use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AcademicYearRequest;
 use App\Http\Resources\AcademicYearResource;
+use App\Models\AcademicYear;
 
 class AcademicYearController extends Controller
 {

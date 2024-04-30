@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CartItem;
 
 class Course extends Model
 {
@@ -26,4 +27,9 @@ class Course extends Model
         return $this->belongsTo(Teacher::class, 'instructor_id');
     }
     // Define any relationships or other methods here
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
 }
